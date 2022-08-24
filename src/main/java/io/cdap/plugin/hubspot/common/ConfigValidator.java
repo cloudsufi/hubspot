@@ -159,7 +159,7 @@ public class ConfigValidator {
       sourceHubspotConfig.containsMacro(SourceHubspotConfig.FILTERS) ||
       sourceHubspotConfig.containsMacro(SourceHubspotConfig.REPORT_TYPE) ||
       sourceHubspotConfig.containsMacro(BaseHubspotConfig.OBJECT_TYPE) ||
-      sourceHubspotConfig.containsMacro(BaseHubspotConfig.API_KEY) ||
+      sourceHubspotConfig.containsMacro(BaseHubspotConfig.ACCESS_TOKEN) ||
       sourceHubspotConfig.containsMacro(SourceHubspotConfig.START_DATE) ||
       sourceHubspotConfig.containsMacro(SourceHubspotConfig.END_DATE)) {
       return;
@@ -168,8 +168,8 @@ public class ConfigValidator {
       new HubspotHelper().getHubspotPage(sourceHubspotConfig, null);
     } catch (IOException e) {
       if (e.getMessage().toLowerCase().contains("forbidden")) {
-        failureCollector.addFailure("Api endpoint not accessible with provided Api Key.", null)
-          .withConfigProperty(BaseHubspotConfig.API_KEY);
+        failureCollector.addFailure("Api endpoint not accessible with provided Access Token.", null)
+          .withConfigProperty(BaseHubspotConfig.ACCESS_TOKEN);
       } else {
         failureCollector.addFailure("Api endpoint not accessible with provided configuration.", null);
       }

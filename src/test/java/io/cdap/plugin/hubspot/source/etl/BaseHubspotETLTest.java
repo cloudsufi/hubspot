@@ -81,7 +81,7 @@ public abstract class BaseHubspotETLTest extends HydratorTestBase {
   private Map<String, String> getPropertiesFromConfig(SourceHubspotConfig sourceHubspotConfig) {
     ImmutableMap.Builder<String, String> builder = new ImmutableMap.Builder<>();
     builder.put("referenceName", sourceHubspotConfig.referenceName);
-    builder.put(SourceHubspotConfig.API_KEY, sourceHubspotConfig.apiKey);
+    builder.put(SourceHubspotConfig.ACCESS_TOKEN, sourceHubspotConfig.accessToken);
     builder.put(SourceHubspotConfig.OBJECT_TYPE, sourceHubspotConfig.objectType);
 
     if (sourceHubspotConfig.apiServerUrl != null) {

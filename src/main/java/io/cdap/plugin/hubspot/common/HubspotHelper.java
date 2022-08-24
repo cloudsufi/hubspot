@@ -91,12 +91,9 @@ public class HubspotHelper {
   }
 
   private HttpGet getRequest(SourceHubspotConfig sourceHubspotConfig, String offset) {
-    URI uri = null;
+    HttpGet httpGet = new HttpGet();
     try {
       URIBuilder b = new URIBuilder(getEndpoint(sourceHubspotConfig));
-      if (sourceHubspotConfig.apiKey != null) {
-        b.addParameter("hapikey", sourceHubspotConfig.apiKey);
-      }
       if (sourceHubspotConfig.startDate != null) {
         b.addParameter("start", sourceHubspotConfig.startDate);
       }
@@ -112,11 +109,15 @@ public class HubspotHelper {
       if (offset != null && getOffsetPropertyName(sourceHubspotConfig) != null) {
         b.addParameter(getOffsetPropertyName(sourceHubspotConfig), offset);
       }
-      uri = b.build();
+      httpGet.setURI(b.build());
+      
+      if (sourceHubspotConfig.accessToken != null) {
+        httpGet.addHeader("authorization", String.format("Bearer %s", sourceHubspotConfig.accessToken));
+      }
     } catch (URISyntaxException e) {
       throw new RuntimeException("Can't build valid uri", e);
     }
-    return new HttpGet(uri);
+    return httpGet;
   }
 
   private HubspotPage parseJson(SourceHubspotConfig sourceHubspotConfig, String json) throws IOException {

@@ -100,9 +100,10 @@ public class TestingHelper {
         builder.setParameter("properties", "subject");
         break;
     }
-    builder.setParameter("hapikey", config.apiKey);
 
+    assert builder != null;
     HttpGet request = new HttpGet(builder.build());
+    request.addHeader("authorization", String.format("Bearer %s", config.accessToken));
 
     CloseableHttpResponse response = client.execute(request);
 
@@ -151,9 +152,10 @@ public class TestingHelper {
         builder = new URIBuilder("https://api.hubapi.com/crm-objects/v1/objects/tickets/" + id);
         break;
     }
-    builder.setParameter("hapikey", config.apiKey);
 
+    assert builder != null;
     HttpDelete request = new HttpDelete(builder.build());
+    request.addHeader("authorization", String.format("Bearer %s", config.accessToken));
 
     CloseableHttpResponse response = client.execute(request);
     HttpEntity entity = response.getEntity();
@@ -235,8 +237,10 @@ public class TestingHelper {
         builder = new URIBuilder("https://api.hubapi.com/crm-objects/v1/objects/tickets/");
         break;
     }
-    builder.setParameter("hapikey", config.apiKey);
+
+    assert builder != null;
     HttpPost request = new HttpPost(builder.build());
+    request.addHeader("authorization", String.format("Bearer %s", config.accessToken));
 
     request.setEntity(new StringEntity(object));
 

@@ -288,7 +288,7 @@ public class HubspotSinkTest extends HydratorTestBase {
 
     Map<String, String> properties = new ImmutableMap.Builder<String, String>()
       .put("referenceName", sourceHubspotConfig.referenceName)
-      .put(SinkHubspotConfig.API_KEY, sourceHubspotConfig.apiKey)
+      .put(SinkHubspotConfig.ACCESS_TOKEN, sourceHubspotConfig.accessToken)
       .put(SinkHubspotConfig.OBJECT_TYPE, sourceHubspotConfig.objectType)
       .put(SinkHubspotConfig.OBJECT_FIELD, "body")
       .build();

@@ -21,7 +21,7 @@
   <name>Hubspot Plugins</name>
   <groupId>io.cdap</groupId>
   <artifactId>hubspot-plugins</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-snapshot</version>
   <description>Hubspot Plugins</description>
   <url>https://github.com/data-integrations/hubspot</url>
 

@@ -17,8 +17,8 @@
         },
         {
           "widget-type": "securekey-text",
-          "label": "API Key",
-          "name": "apiKey"
+          "label": "Access Token",
+          "name": "accessToken"
         },
         {
           "name": "objectType",

@@ -121,9 +121,6 @@ public class HubspotSinkHelper {
       Map<String, String> headers = new HashMap<>();
       try {
         URIBuilder b = new URIBuilder(getSinkEndpoint(config));
-        if (config.apiKey != null) {
-          b.addParameter("hapikey", config.apiKey);
-        }
         URL url = new URL(b.build().toString());
         conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
@@ -132,6 +129,9 @@ public class HubspotSinkHelper {
         }
         if (!headers.containsKey("Content-Type")) {
           conn.addRequestProperty("Content-Type", "application/json");
+        }
+        if (config.accessToken != null) {
+          conn.addRequestProperty("authorization", String.format("Bearer %s", config.accessToken));
         }
 
         if (input.length() > 0) {

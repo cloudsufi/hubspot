@@ -130,6 +130,7 @@ public class HubspotSinkHelper {
         if (!headers.containsKey("Content-Type")) {
           conn.addRequestProperty("Content-Type", "application/json");
         }
+        // Access token Implementation
         if (config.accessToken != null) {
           conn.addRequestProperty("authorization", String.format("Bearer %s", config.accessToken));
         }

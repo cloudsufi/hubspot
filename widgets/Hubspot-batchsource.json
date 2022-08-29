@@ -16,7 +16,7 @@
           "name": "apiServerUrl"
         },
         {
-          "widget-type": "password",
+          "widget-type": "securekey-text",
           "label": "Access Token",
           "name": "accessToken"
         },

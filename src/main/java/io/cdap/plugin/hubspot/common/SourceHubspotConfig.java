@@ -92,7 +92,7 @@ public class SourceHubspotConfig extends BaseHubspotConfig {
    * @param referenceName the reference name
    * @param apiServerUrl the api server url of hubspot
    * @param objectType the object type of hubspot
-   * @param apiKey the api key of hubspot
+   * @param accessToken the access token of private apps of hubspot
    * @param filters the filters for Analytics object type
    * @param startDate the start date for Analytics object type
    * @param endDate the end date for Analytics object type
@@ -105,7 +105,7 @@ public class SourceHubspotConfig extends BaseHubspotConfig {
   public SourceHubspotConfig(String referenceName,
                              String apiServerUrl,
                              String objectType,
-                             String apiKey,
+                             String accessToken,
                              String filters,
                              String startDate,
                              String endDate,
@@ -114,7 +114,7 @@ public class SourceHubspotConfig extends BaseHubspotConfig {
                              String reportCategory,
                              String reportObject,
                              String timePeriod) {
-    super(referenceName, apiServerUrl, objectType, apiKey);
+    super(referenceName, apiServerUrl, objectType, accessToken);
     this.filters = filters;
     this.startDate = startDate;
     this.endDate = endDate;

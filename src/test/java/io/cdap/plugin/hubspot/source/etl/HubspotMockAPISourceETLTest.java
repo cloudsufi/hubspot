@@ -58,7 +58,7 @@ public abstract class HubspotMockAPISourceETLTest extends BaseHubspotETLTest {
     SourceHubspotConfig properties = new SourceHubspotConfig(testName.getMethodName(),
                                                              getServerAddress(),
                                                              "Contact Lists",
-                                                             "some-api-key",
+                                                             "some-access-token",
                                                              null,
                                                              null,
                                                              null,
@@ -68,11 +68,11 @@ public abstract class HubspotMockAPISourceETLTest extends BaseHubspotETLTest {
                                                              null,
                                                              null);
     wireMockRule.stubFor(WireMock.get(
-      WireMock.urlEqualTo("/contacts/v1/lists?hapikey=some-api-key&count=100"))
+      WireMock.urlEqualTo("/contacts/v1/lists?count=100"))
                            .willReturn(WireMock.aResponse()
                                          .withBody(readResourceFile("testContactListsP1.json"))));
     wireMockRule.stubFor(WireMock.get(
-      WireMock.urlEqualTo("/contacts/v1/lists?hapikey=some-api-key&count=100&offset=2"))
+      WireMock.urlEqualTo("/contacts/v1/lists?count=100&offset=2"))
                            .willReturn(WireMock.aResponse()
                                          .withBody(readResourceFile("testContactListsP2.json"))));
     List<StructuredRecord> records = getPipelineResults(properties, 4);
@@ -88,7 +88,7 @@ public abstract class HubspotMockAPISourceETLTest extends BaseHubspotETLTest {
     SourceHubspotConfig properties = new SourceHubspotConfig(testName.getMethodName(),
                                                              getServerAddress(),
                                                              "Contacts",
-                                                             "some-api-key",
+                                                             "some-access-token",
                                                              null,
                                                              null,
                                                              null,
@@ -99,11 +99,11 @@ public abstract class HubspotMockAPISourceETLTest extends BaseHubspotETLTest {
                                                              null);
 
     wireMockRule.stubFor(WireMock.get(
-      WireMock.urlEqualTo("/contacts/v1/lists/all/contacts/all?hapikey=some-api-key&count=100"))
+      WireMock.urlEqualTo("/contacts/v1/lists/all/contacts/all?count=100"))
                            .willReturn(WireMock.aResponse()
                                          .withBody(readResourceFile("testContactsP1.json"))));
     wireMockRule.stubFor(WireMock.get(
-      WireMock.urlEqualTo("/contacts/v1/lists/all/contacts/all?hapikey=some-api-key&count=100&vidOffset=2"))
+      WireMock.urlEqualTo("/contacts/v1/lists/all/contacts/all?vidOffset=2"))
                            .willReturn(WireMock.aResponse()
                                          .withBody(readResourceFile("testContactsP2.json"))));
     List<StructuredRecord> records = getPipelineResults(properties, 4);
